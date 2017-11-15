@@ -1,0 +1,61 @@
+﻿1-Research te çalışanların adları ve adresleri
+
+select e.fname,e.address from EMPLOYEE e,DEPARTMENT d
+where e.dno=d.dnumber and d.dname='Research'
+
+2-Çalışanların ortalama maaşı,max maaşı,min maaaşı
+
+select sum(salary),max(salary),min(Salary),avg(salary) from EMPLOYEE
+
+3-Araştırma bölümünde çalışanların maaşlarının toplamı
+
+select sum(salary) from EMPLOYEE e,DEPARTMENT d
+where e.dno=d.dnumber and d.dname='Research'
+
+4-Şirkette toplam çalışan sayısı ve research te çalışan toplam kişi
+
+select count (*) from
+Q22: select count (*) from EMPLOYEE, DEPARTMENT where dno=dnumber AND dname=‘Research’
+
+5-Her bölüm için, departman numarasını, bölümdeki çalışanların sayısını ve ortalama maaşları
+
+select dname,dno,count(*),avg(salary) from EMPLOYEE e,DEPARTMENT d
+where e.dno=d.dnumber group by dname
+
+6-Her proje için, proje numarasını, proje adını ve o proje üzerinde çalışan çalışanların sayısı
+
+select pname,pnumber,count(*) from EMPLOYEE e,PROJECT p
+where e.dno=p.dnum group by pname
+
+7-İkiden fazla çalışanın çalıştığı her proje için proje numarasını, proje adını ve proje üzerinde çalışan çalışanların sayısı
+
+select pname,pnumber,count(*) from EMPLOYEE e,PROJECT p
+where p.dnum=e.dno group by pname having count(e.ssn)>2
+
+8-Bölüm 5 in çalıştığı projenin adı,numarası ve bu projede çalışan sayısı
+
+select pname,pnumber,count(*) from PROJECT p,DEPARTMENT d,EMPLOYEE e
+where e.dno=d.dnumber and p.dnum=d.dnumber and d.dnumber=5 group by pname
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
